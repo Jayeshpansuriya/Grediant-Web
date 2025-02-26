@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #051937, #A8EB12); /* Gradient background */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Center the section with flexbox */
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* Style the buttons */
+        button {
+            padding: 20px 60px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #333;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff6f61;
+            color: white;
+        }
+
+        /* Styling for the 'copy' div */
+        .copycode {
+            margin-top: 20px;
+            padding: 15px 25px;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copycode:hover {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        h2 {
+    font-size: 24px; /* Larger font size */
+    font-weight: bold; /* Bold text */
+    color: #ffffff; /* White text color */
+    margin-bottom: 20px; /* Space below the text */
+    text-transform: uppercase; /* Capitalize all letters */
+    letter-spacing: 1.5px; /* Add some spacing between letters */
+    text-shadow: 2px 2px 4px rgb(0, 0, 0); /* Subtle text shadow */
+    animation: fadeIn 1.5s ease-in-out; /* Animation for a fade-in effect */
+}
+
+h2:hover {
+    color: #ffffff; /* Change color on hover */
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.7); /* Enhanced text shadow on hover */
+    transform: scale(1.1); /* Slightly enlarge the text on hover */
+}
+
+/* Keyframes for the fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+            <button id="myButton">#051937</button>
+            <button id="myButton2">#008793</button>
+
+            <h2>Click to copy</h2>
+            <div class="copycode">
+                background-image: linear-gradient(to right, rgb(92,145,229), rgb(125,63,198))
+            </div>
+        </div>
+        <div>
+            <h2><p>Created By: Jayesh Pansuriya</p></h2>
+        </div>
+    </section>
+
+    <script>
+        let btn1 = document.getElementById("myButton");
+        let btn2 = document.getElementById("myButton2");
+        let copydiv = document.querySelector(".copycode");
+        let rgb1 = '#051937';
+        let rgb2 = '#A8EB12';
+
+        const hexvalues = () => {
+            let hexvalue = "0123456789abcdef";
+            let color = "#";
+
+            for (let i = 0; i < 6; i++) {
+                color = color + hexvalue[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        };
+
+        const handlebutton1 = () => {
+            rgb1 = hexvalues();
+            console.log(rgb1);
+            btn1.innerText = rgb1;
+            document.body.style.background = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+            copydiv.innerHTML = `background-image: linear-gradient(to right, ${rgb1}, ${rgb2})`;
+        };
+
+        const handlebutton2 = () => {
+            rgb2 = hexvalues();
+            console.log(rgb2);
+            btn2.innerText = rgb2;
+            document.body.style.background = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+            copydiv.innerHTML = `background-image: linear-gradient(to right, ${rgb1}, ${rgb2})`;
+        };
+
+        btn1.addEventListener("click", handlebutton1);
+        btn2.addEventListener("click", handlebutton2);
+
+        copydiv.addEventListener("click", () => {
+            navigator.clipboard.writeText(copydiv.innerText);
+            alert("Your code is copied!");
+        });
+    </script>
+</body>
+</html>
